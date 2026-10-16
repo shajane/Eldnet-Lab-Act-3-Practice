@@ -1,0 +1,17 @@
+﻿@model LA2_Duyongco.Models.Student
+
+<div class="card mb-3 shadow-sm" style="max-width: 400px;">
+    <div class="card-body">
+        <p class="mb-2"><strong>ID:</strong> @Model.Id</p>
+        <p class="mb-2"><strong>Name:</strong> @Model.Name</p>
+        <p class="mb-2"><strong>Course:</strong> @Model.Course</p>
+        <p class="mb-3"><strong>Grade:</strong> @Model.Grade</p>
+
+        @if (Model.Grade >= 90)
+        {
+            <div class="alert alert-warning mb-0 p-2" role="alert">
+                Honor Student
+            </div>
+        }
+    </div>
+</div>

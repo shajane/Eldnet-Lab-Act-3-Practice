@@ -1,0 +1,12 @@
+﻿@model LA2_Duyongco.Models.Student
+
+<h2 class="mt-4">Student Details</h2>
+<hr />
+
+<!-- Reusing the Partial View Card -->
+<partial name="_StudentDetailsCard" model="Model" />
+
+<div class="mt-3">
+    <a asp-action="EditStudent" asp-route-id="@Model.Id" class="btn btn-primary">Edit Student</a>
+    <a asp-action="StudentListView" class="btn btn-secondary">Back to List</a>
+</div>

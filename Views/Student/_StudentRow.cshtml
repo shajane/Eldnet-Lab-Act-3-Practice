@@ -1,0 +1,29 @@
+﻿@model LA2_Duyongco.Models.Student
+
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td>@Model.Course</td>
+    <td>
+        @* Status Logic: Passed or Failed *@
+        @if (Model.Grade >= 75)
+        {
+            <span class="badge bg-success">Passed</span>
+        }
+        else
+        {
+            <span class="badge bg-danger">Failed</span>
+        }
+
+        @* Honor Student Logic *@
+        @if (Model.Grade >= 90)
+        {
+            <span class="badge bg-warning text-dark ms-1">Honor</span>
+        }
+    </td>
+    <td>
+        <a asp-action="EditStudent" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Edit</a>
+        <a asp-action="DetailsStudent" asp-route-id="@Model.Id" class="btn btn-sm btn-info">Details</a>
+        <a asp-action="DeleteStudent" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Delete</a>
+    </td>
+</tr>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<LA2_Duyongco.Models.Student>
+
+@{
+    // Razor Variables & Calculations
+    int totalStudents = Model.Count();
+    int passedStudents = Model.Count(s => s.Grade >= 75);
+    int failedStudents = Model.Count(s => s.Grade < 75);
+    int honorStudents = Model.Count(s => s.Grade >= 90);
+}
+
+<h2 class="mt-4">Student List</h2>
+<p class="text-muted">Razor + Partial View + Tag Helpers demonstration</p>
+
+<!-- Summary Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="card-title text-muted">Total Students</h6>
+                <h3 class="card-text">@totalStudents</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="card-title text-muted">Passed</h6>
+                <h3 class="card-text">@passedStudents</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="card-title text-muted">Failed</h6>
+                <h3 class="card-text">@failedStudents</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="card-title text-muted">Honor Students</h6>
+                <h3 class="card-text text-warning">@honorStudents</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    <a asp-action="AddStudent" class="btn btn-dark">Add Student</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <!-- Injecting the Row Partial View -->
+            <partial name="_StudentRow" model="item" />
+        }
+    </tbody>
+</table>
+
+<hr class="my-4" />
+
+<!-- Razor For Loop Demonstration -->
+<div class="mb-5">
+    <h3>Razor Example</h3>
+    <p class="text-muted">The following uses a Razor <code>for</code> loop to display a simple list.</p>
+    <div>
+        @for (int i = 1; i <= 3; i++)
+        {
+            <span class="badge bg-secondary me-2 p-2">Razor loop item @i</span>
+        }
+    </div>
+</div>
